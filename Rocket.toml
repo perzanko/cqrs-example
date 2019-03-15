@@ -1,0 +1,6 @@
+[development]
+address = "127.0.0.1"
+port = 3000
+keep_alive = 5
+log = "normal"
+limits = { forms = 32768 }

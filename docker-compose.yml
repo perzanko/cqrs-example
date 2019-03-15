@@ -1,0 +1,33 @@
+version: "3"
+services:
+  cqrs_example_api:
+    container_name: cqrs_example_api
+    build: .
+    volumes:
+      - .:/usr/src/app
+    command: cargo watch -x run
+    ports:
+      - "3000:3000"
+    depends_on:
+      - cqrs_example_postgres_write
+      - cqrs_example_postgres_read
+
+  cqrs_example_postgres_write:
+    container_name: cqrs_example_postgres_write
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: developer
+      POSTGRES_DB: cqrs_example_write
+
+  cqrs_example_postgres_read:
+    container_name: cqrs_example_postgres_read
+    image: postgres:9.6
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: developer
+      POSTGRES_DB: cqrs_example_read
