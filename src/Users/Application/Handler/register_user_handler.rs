@@ -8,9 +8,9 @@ pub struct RegisterUserCommandHandler {
 }
 
 impl RegisterUserCommandHandler {
-    pub fn new(repository: ORMUserRepository) -> RegisterUserCommandHandler {
+    pub fn new() -> RegisterUserCommandHandler {
         RegisterUserCommandHandler {
-            user_repository: repository,
+            user_repository: ORMUserRepository,
         }
     }
 
