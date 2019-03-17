@@ -1,6 +1,5 @@
-#[derive(Debug)]
 pub struct User {
-    id: String;
+    id: String,
     first_name: String,
     last_name: String,
     email: String,
@@ -16,21 +15,5 @@ impl User {
             email: email,
             created_at: created_at,
         }
-    }
-
-    pub fn first_name(&self) -> &String {
-        &self.first_name
-    }
-
-    pub fn last_name(&self) -> &String {
-        &self.last_name
-    }
-
-    pub fn email(&self) -> &String {
-        &self.email
-    }
-
-    pub fn full_name(&self) -> String {
-        format!("{} {}", self.first_name, self.last_name)
     }
 }

@@ -1,4 +1,3 @@
-#[derive(Debug)]
 #[derive(Serialize, Deserialize)]
 pub struct RegisterUserCommand {
     first_name: String,

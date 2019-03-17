@@ -1,11 +1,26 @@
-use super::super::super::domain::user::User;
-use super::super::super::domain::user_repository::UserRepository;
+use diesel::RunQueryDsl;
 
-#[derive(Debug)]
-pub struct ORMUserRepository; // TODO: implement real db connection...
+use crate::users::infrastructure::repository::connection_manager::ConnectionManager;
+use crate::write_schema::users;
+use crate::users::domain::user_repository::UserRepository;
+use crate::users::infrastructure::models::write::new_user::NewUser;
+
+pub struct ORMUserRepository {
+    connection_manager: ConnectionManager,
+}
 
 impl UserRepository for ORMUserRepository {
-    fn add(&self, user: User) -> User {
-        user
+    fn new() -> Self {
+        ORMUserRepository {
+            connection_manager: ConnectionManager::new(),
+        }
+    }
+
+    fn add(&self, new_user: NewUser) -> bool {
+        diesel::insert_into(users::table)
+            .values(&new_user)
+            .execute(&self.connection_manager.connection_write)
+            .expect("Error saving new post");
+        true
     }
 }

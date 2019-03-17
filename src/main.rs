@@ -9,12 +9,12 @@ extern crate rocket;
 extern crate diesel;
 extern crate dotenv;
 
-mod users;
+pub mod read_schema;
+pub mod users;
+pub mod write_schema;
 
 use users::infrastructure::api::user_routes;
 
 fn main() {
-    rocket::ignite()
-        .mount("/users/command/", user_routes())
-        .launch();
+    rocket::ignite().mount("/users/c/", user_routes()).launch();
 }
