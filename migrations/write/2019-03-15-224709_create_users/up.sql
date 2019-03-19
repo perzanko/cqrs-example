@@ -4,5 +4,5 @@ CREATE TABLE users (
     first_name varchar(255),
     last_name varchar(255),
     email varchar(255),
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

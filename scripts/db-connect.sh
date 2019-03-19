@@ -11,5 +11,4 @@ else
   connection=$DATABASE_URL_WRITE
 fi
 
-
 psql "$connection"

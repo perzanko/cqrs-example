@@ -4,6 +4,6 @@ table! {
         first_name -> Nullable<Varchar>,
         last_name -> Nullable<Varchar>,
         email -> Nullable<Varchar>,
-        created_at -> Timestamptz,
+        created_at -> Timestamp,
     }
 }
